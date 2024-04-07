@@ -1,0 +1,15 @@
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\bin\Debug\TheMuseum.exe.config
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\bin\Debug\TheMuseum.exe
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\bin\Debug\TheMuseum.pdb
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum.csproj.AssemblyReference.cache
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\App.g.cs
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum_MarkupCompile.cache
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum_MarkupCompile.lref
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum.g.resources
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum.Properties.Resources.resources
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum.csproj.GenerateResource.cache
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum.csproj.CoreCompileInputs.cache
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum.exe
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\TheMuseum.pdb
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\Views\Windows\MainWindow.g.cs
+D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum\obj\Debug\Views\Windows\MainWindow.baml
