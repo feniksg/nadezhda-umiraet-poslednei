@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SiteAPI.Data;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Options;
 
 internal class Program
 {
@@ -15,7 +16,12 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        // Добавление контекста к бд
+        // Add-Migration <Имя миграции> -Context <Имя контекста>
+        // Update-Database <Имя миграции> -Context <Имя контекста>
         builder.Services.AddDbContext<CustomUserDbContext>(options =>
+            options.UseSqlite("Data Source=SiteDB.db"));
+        builder.Services.AddDbContext<ArtworkDbContext>(options =>
             options.UseSqlite("Data Source=SiteDB.db"));
 
         var app = builder.Build();
