@@ -17,12 +17,11 @@ internal class Program
         builder.Services.AddSwaggerGen();
 
         // Добавление контекста к бд
-        // Add-Migration <Имя миграции> -Context <Имя контекста>
-        // Update-Database <Имя миграции> -Context <Имя контекста>
-        builder.Services.AddDbContext<CustomUserDbContext>(options =>
+        // Add-Migration <Имя миграции> 
+        // Update-Database <Имя миграции> 
+        builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlite("Data Source=SiteDB.db"));
-        builder.Services.AddDbContext<ArtworkDbContext>(options =>
-            options.UseSqlite("Data Source=SiteDB.db"));
+        
 
         var app = builder.Build();
 
