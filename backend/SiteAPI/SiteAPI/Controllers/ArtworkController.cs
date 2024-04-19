@@ -12,6 +12,17 @@ namespace SiteAPI.Controllers
     {
         public ArtworkController(ApplicationDbContext context) :base(context) { }
 
+        public override async Task<IActionResult> GetList()
+        {
+            var items = await _context.Artworks
+                .Include(art => art.LifePeriod)
+                .Select(art => new { art.Id, art.YearCreated, art.Series, art.Genre, art.ImageFilePath, art.LifePeriod.Name })
+                .ToListAsync();
+
+
+            return Ok(items);
+        }
+
         protected override bool ModelExists(int id)
         {
             return _context.Artworks.Any(a => a.Id == id);

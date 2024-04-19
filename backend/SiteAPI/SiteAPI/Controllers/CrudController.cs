@@ -16,7 +16,7 @@ namespace SiteAPI.Controllers
         }
 
         [HttpGet]
-        public virtual async Task<IActionResult> List()
+        public virtual async Task<IActionResult> GetList()
         {
             var items = await _context.Set<TModel>().ToListAsync();
             return Ok(items);
