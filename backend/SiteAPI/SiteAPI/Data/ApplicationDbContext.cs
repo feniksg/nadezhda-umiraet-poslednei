@@ -18,13 +18,13 @@ namespace SiteAPI.Data
         public DbSet<LifePeriod> LifePeriods { get; set;}
         public DbSet<Person> Persons { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)                     //переопределение методв из базового DBContext
         {
             modelBuilder.Entity<LifePeriod>()
                 .HasMany(e => e.Artworks)
                 .WithOne(e => e.LifePeriod)
-                .HasForeignKey(e => e.LifePeriodId)
-                .HasPrincipalKey(e => e.Id);
+                .HasForeignKey(e => e.LifePeriodId)                                          //внешний ключ в табл арта связывание картины с периодом жизни
+                .HasPrincipalKey(e => e.Id);                                                //в качестве ключа по которому происх соответствие исп ид из сущности LifePeriod
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
