@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SiteAPI.Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Options;
+using SiteAPI.Settings;
 
 internal class Program
 {
@@ -19,9 +20,12 @@ internal class Program
         // Добавление контекста к бд
         // Add-Migration <Имя миграции> 
         // Update-Database <Имя миграции> 
-        builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlite("Data Source=SiteDB.db"));
+        builder.Services.AddDbContext<ApplicationDbContext>();
 
+
+
+
+        builder.Services.AddOptions<SettingsOptions>(SettingsOptions.Settings);
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo
