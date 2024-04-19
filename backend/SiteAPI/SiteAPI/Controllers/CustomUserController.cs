@@ -7,34 +7,20 @@ using SiteAPI.Models;
 
 namespace SiteAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/users")]
     [ApiController]
-    public class CustomUserController : ControllerBase
+    public class CustomUserController : CrudController<CustomUser, ApplicationDbContext>
     {
-        private readonly CustomUserDbContext _context; 
-        public CustomUserController(CustomUserDbContext customUserDbContext)
+        public CustomUserController(ApplicationDbContext context) :base(context) { }
+
+        protected override bool ModelExists(int id)
         {
-            _context = customUserDbContext;
+            return _context.CustomUsers.Any(u => u.Id == id);
         }
 
-        [HttpGet]
-
-        public async Task<IActionResult> GetAll()
+        protected override int GetModelId(CustomUser model)
         {
-            var users = await _context.CustomUsers.ToListAsync();
-            
-            if (users == null) {  return NotFound(); }
-            
-            return Ok(users);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Add(CustomUser user)
-        {
-            await _context.CustomUsers.AddAsync(user);
-            await _context.SaveChangesAsync();
-            
-            return Ok(user);
+            return model.Id;    
         }
     }
 }

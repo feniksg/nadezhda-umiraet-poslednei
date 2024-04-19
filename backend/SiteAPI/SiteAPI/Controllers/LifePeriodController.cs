@@ -6,21 +6,20 @@ using SiteAPI.Models;
 
 namespace SiteAPI.Controllers
 {
-    [Route("api/arts")]
+    [Route("api/periods")]
     [ApiController]
-    public class ArtworkController : CrudController<Artwork, ApplicationDbContext>
+    public class LifePeriodController : CrudController<LifePeriod,ApplicationDbContext>
     {
-        public ArtworkController(ApplicationDbContext context) :base(context) { }
+        public LifePeriodController(ApplicationDbContext context) :base(context) { }
 
         protected override bool ModelExists(int id)
         {
-            return _context.Artworks.Any(a => a.Id == id);
+            return _context.LifePeriods.Any(x => x.Id == id);
         }
 
-        protected override int GetModelId(Artwork model)
+        protected override int GetModelId(LifePeriod model)
         {
             return model.Id;
         }
     }
-
 }

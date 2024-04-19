@@ -6,21 +6,20 @@ using SiteAPI.Models;
 
 namespace SiteAPI.Controllers
 {
-    [Route("api/arts")]
+    [Route("api/events")]
     [ApiController]
-    public class ArtworkController : CrudController<Artwork, ApplicationDbContext>
+    public class EventInfoController : CrudController<EventInfo, ApplicationDbContext>
     {
-        public ArtworkController(ApplicationDbContext context) :base(context) { }
+        public EventInfoController(ApplicationDbContext context) :base(context) { }
 
         protected override bool ModelExists(int id)
         {
-            return _context.Artworks.Any(a => a.Id == id);
+            return _context.Events.Any(x => x.Id == id);
         }
 
-        protected override int GetModelId(Artwork model)
+        protected override int GetModelId(EventInfo model)
         {
             return model.Id;
         }
     }
-
 }
