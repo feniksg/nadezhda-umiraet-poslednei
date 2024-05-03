@@ -1,10 +1,8 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
 using System.Windows;
 using TheMuseum.Autotification;
+using TheMuseum.Biography;
 
 namespace TheMuseum;
 
@@ -20,7 +18,8 @@ public partial class App
     protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
     {
         moduleCatalog
-            .AddModule<AutetificationModel>();
+            .AddModule<AutetificationModule>()
+            .AddModule<BiographyModule>();
     }
 
     protected override Window CreateShell() => Container.Resolve<MainWindow>();

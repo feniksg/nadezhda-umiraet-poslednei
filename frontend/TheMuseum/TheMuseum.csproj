@@ -15,5 +15,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\TheMuseum.Autotification\TheMuseum.Autotification.csproj" />
+	  <ProjectReference Include="..\TheMuseum.Biography\TheMuseum.Biography.csproj" />
 	</ItemGroup>
 </Project>

@@ -5,12 +5,12 @@ using TheMuseum.Autotification.Views;
 
 namespace TheMuseum.Autotification;
 
-public class AutetificationModel : IModule
+public class AutetificationModule : IModule
 {
     public void OnInitialized(IContainerProvider containerProvider)
     {
-        containerProvider.Resolve<IRegionManager>()
-            .RegisterViewWithRegion("MainRegion", nameof(AutentificationView));
+      //  containerProvider.Resolve<IRegionManager>()
+        //    .RegisterViewWithRegion("MainRegion", nameof(AutentificationView));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
