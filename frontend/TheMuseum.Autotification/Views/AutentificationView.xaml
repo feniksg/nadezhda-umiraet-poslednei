@@ -6,7 +6,53 @@
              xmlns:local="clr-namespace:TheMuseum.Autotification.Views" 
              xmlns:viewmodels="clr-namespace:TheMuseum.Autotification.ViewModels"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance viewmodels:AutentificatioViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <TextBox Text="{Binding Test,UpdateSourceTrigger=PropertyChanged}"/>
+             d:DataContext="{d:DesignInstance viewmodels:AutentificationViewModel}"
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Background="#F5E8D9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Autotification\Images\Верещагин.png" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+        <Border Grid.Row="1" Width="500" Height="325" CornerRadius="20" Background="#C5A57F" VerticalAlignment="Top" Margin="0,10,0,0" BorderThickness="1" BorderBrush="#703E2E">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="7" Direction="15" Color="Black" Opacity="0.5" />
+            </Border.Effect>
+            <StackPanel Grid.Row="1" Background="#C5A57F" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Width="462" Height="305">
+                <TextBlock Text="Авторизация" HorizontalAlignment="Right" FontWeight="Regular" FontSize="25" FontFamily="Amiri" Margin="0,15,0,0"></TextBlock>
+                <Border BorderThickness="0 0 0 3" BorderBrush="#703E2E" Margin="107 0 0 40">
+                    <Border.Effect>
+                        <BlurEffect Radius="2" KernelType="Gaussian"/>
+                    </Border.Effect>
+                </Border>
+                <TextBlock Margin="0,0,0,10">
+                    <Label Content="Логин:" FontFamily="Verdana" FontSize="20" Padding="0,0,0,0" Margin="10,0,0,7"/>
+                    <TextBox x:Name="loginBox" Background="#F3E3D3"  Text="" FontFamily="Verdana" FontSize="20" Padding="5,5,5,5" Width="280" Height="36" Margin="19,0,0,0">
+                        <TextBox.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="5" Color="Gray" Opacity="0.5"/>
+                        </TextBox.Effect>
+                    </TextBox>
+                </TextBlock>
+                <TextBlock Margin="0,0,0,10">
+                    <Label Content="Пароль:"  FontFamily="Verdana" FontSize="20" Padding="0,0,0,0" Margin="10,0,0,7"/>
+                    <PasswordBox x:Name="passBox" Background="#F3E3D3" FontSize="20" FontFamily="Verdana" Padding="5,5,5,5" Width="280" Height="36" Margin="5,0,0,0" >
+                        <PasswordBox.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="5" Color="Gray" Opacity="0.5"/>
+                        </PasswordBox.Effect>
+                    </PasswordBox>
+                </TextBlock>
+                <Label x:Name="errorMes" Content="Введены неверные данные. Попробуйте ещё раз." Foreground="Red" Visibility="Hidden"/>
+                <Border BorderThickness="0 0 0 3" BorderBrush="#703E2E" Margin="0 0 80 0">
+                    <Border.Effect>
+                        <BlurEffect Radius="2" KernelType="Gaussian"/>
+                    </Border.Effect>
+                </Border>
+                <Button Content="Войти" Foreground="White" Background="#703E2E" FontFamily="Verdana" FontSize="22" Padding="1,7,1,7" Height="41" Width="413" Margin="0,20,0,0" BorderThickness="0" >
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="5" Color="Black" Opacity="0.5"/>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
 </UserControl>

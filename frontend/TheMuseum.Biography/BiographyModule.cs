@@ -16,7 +16,7 @@ namespace TheMuseum.Biography
         public void OnInitialized(IContainerProvider containerProvider)
         {
             containerProvider.Resolve<IRegionManager>()
-                .RegisterViewWithRegion("MainRegion", nameof(BiographyView));
+                .RegisterViewWithRegion("RegionOfBiography", nameof(BiographyView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

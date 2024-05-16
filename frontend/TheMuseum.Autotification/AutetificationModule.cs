@@ -9,8 +9,8 @@ public class AutetificationModule : IModule
 {
     public void OnInitialized(IContainerProvider containerProvider)
     {
-      //  containerProvider.Resolve<IRegionManager>()
-        //    .RegisterViewWithRegion("MainRegion", nameof(AutentificationView));
+        containerProvider.Resolve<IRegionManager>()
+            .RegisterViewWithRegion("RegionOfAutentification", nameof(AutentificationView));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)

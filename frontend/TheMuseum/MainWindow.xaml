@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:TheMuseum"
          xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <ContentControl prism:RegionManager.RegionName="MainRegion"/>
+        Title="MainWindow" Width="1000" Height="600"
+        WindowStartupLocation="CenterScreen">
+    <ContentControl prism:RegionManager.RegionName="RegionOfAutentification"/>
 </Window>
