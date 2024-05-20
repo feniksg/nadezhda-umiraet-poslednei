@@ -1,6 +1,5 @@
 ﻿using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TheMuseum.Biography.Models;
 

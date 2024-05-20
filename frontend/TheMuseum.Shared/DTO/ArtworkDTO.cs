@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace TheMuseum.Shared.DTO;
+﻿namespace TheMuseum.Shared.DTO;
 
 public class ArtworkDTO
 {

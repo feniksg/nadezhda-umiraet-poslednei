@@ -1,12 +1,13 @@
-﻿<Window x:Class="TheMuseum.MainWindow"
+﻿<Window x:Class="TheMuseum.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMuseum"
-         xmlns:prism="http://prismlibrary.com/"
+        xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1000" Height="600"
-        WindowStartupLocation="CenterScreen">
-    <ContentControl prism:RegionManager.RegionName="RegionOfAutentification"/>
+        Title="TheMuseum"
+        Width="{Binding Width,Mode=TwoWay}"
+        Height="{Binding Height,Mode=TwoWay}">
+    <ContentControl prism:RegionManager.RegionName="MainRegion"/>
 </Window>

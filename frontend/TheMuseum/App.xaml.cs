@@ -3,6 +3,7 @@ using Prism.Modularity;
 using System.Windows;
 using TheMuseum.Autotification;
 using TheMuseum.Biography;
+using TheMuseum.Views;
 
 namespace TheMuseum;
 

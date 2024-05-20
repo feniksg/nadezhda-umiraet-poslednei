@@ -1,6 +1,4 @@
-﻿using ReactiveUI;
-using System.Windows.Controls;
-using TheMuseum.Autotification.ViewModels;
+﻿using System.Windows.Controls;
 
 namespace TheMuseum.Autotification.Views
 {
@@ -14,17 +12,5 @@ namespace TheMuseum.Autotification.Views
             InitializeComponent();
         }
 
-        //private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        //{
-        //    if(loginBox.Text == "admin" && passBox.Password == "admin")
-        //    {
-        //        errorMes.Visibility = System.Windows.Visibility.Hidden;
-
-        //    }
-        //    else
-        //    {
-        //        errorMes.Visibility = System.Windows.Visibility.Visible;
-        //    }
-        //}
     }
 }

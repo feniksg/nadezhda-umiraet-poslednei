@@ -17,4 +17,7 @@
 	  <ProjectReference Include="..\TheMuseum.Autotification\TheMuseum.Autotification.csproj" />
 	  <ProjectReference Include="..\TheMuseum.Biography\TheMuseum.Biography.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Views\" />
+	</ItemGroup>
 </Project>

@@ -47,7 +47,7 @@
                         <BlurEffect Radius="2" KernelType="Gaussian"/>
                     </Border.Effect>
                 </Border>
-                <Button Content="Войти" Foreground="White" Background="#703E2E" FontFamily="Verdana" FontSize="22" Padding="1,7,1,7" Height="41" Width="413" Margin="0,20,0,0" BorderThickness="0" >
+                <Button Content="Войти" Command="{Binding LoginCommand}" Foreground="White" Background="#703E2E" FontFamily="Verdana" FontSize="22" Padding="1,7,1,7" Height="41" Width="413" Margin="0,20,0,0" BorderThickness="0" >
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="5" Color="Black" Opacity="0.5"/>
                     </Button.Effect>
