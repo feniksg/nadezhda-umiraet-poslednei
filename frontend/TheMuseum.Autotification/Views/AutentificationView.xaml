@@ -27,7 +27,7 @@
                 </Border>
                 <TextBlock Margin="0,0,0,10">
                     <Label Content="Логин:" FontFamily="Verdana" FontSize="20" Padding="0,0,0,0" Margin="10,0,0,7"/>
-                    <TextBox x:Name="loginBox" Background="#F3E3D3"  Text="" FontFamily="Verdana" FontSize="20" Padding="5,5,5,5" Width="280" Height="36" Margin="19,0,0,0">
+                    <TextBox Text="{Binding Username}" Background="#F3E3D3" FontFamily="Verdana" FontSize="20" Padding="5,5,5,5" Width="280" Height="36" Margin="19,0,0,0">
                         <TextBox.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="5" Color="Gray" Opacity="0.5"/>
                         </TextBox.Effect>
@@ -35,13 +35,13 @@
                 </TextBlock>
                 <TextBlock Margin="0,0,0,10">
                     <Label Content="Пароль:"  FontFamily="Verdana" FontSize="20" Padding="0,0,0,0" Margin="10,0,0,7"/>
-                    <PasswordBox x:Name="passBox" Background="#F3E3D3" FontSize="20" FontFamily="Verdana" Padding="5,5,5,5" Width="280" Height="36" Margin="5,0,0,0" >
-                        <PasswordBox.Effect>
+                    <TextBox Text="{Binding Password}" Background="#F3E3D3" FontFamily="Verdana" FontSize="20" Padding="5,5,5,5" Width="280" Height="36" Margin="5,0,0,0">
+                        <TextBox.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="5" Direction="5" Color="Gray" Opacity="0.5"/>
-                        </PasswordBox.Effect>
-                    </PasswordBox>
+                        </TextBox.Effect>
+                    </TextBox>
                 </TextBlock>
-                <Label x:Name="errorMes" Content="Введены неверные данные. Попробуйте ещё раз." Foreground="Red" Visibility="Hidden"/>
+                <Label x:Name="errorMes" Content="Введены неверные данные. Попробуйте ещё раз." Foreground="Red" Visibility="{Binding LoginErrorVisibility}" />
                 <Border BorderThickness="0 0 0 3" BorderBrush="#703E2E" Margin="0 0 80 0">
                     <Border.Effect>
                         <BlurEffect Radius="2" KernelType="Gaussian"/>

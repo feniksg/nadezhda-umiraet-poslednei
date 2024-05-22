@@ -1,6 +1,7 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using TheMuseum.Biography.Services;
+using TheMuseum.Biography.ViewModels;
 using TheMuseum.Biography.Views;
 
 namespace TheMuseum.Biography;

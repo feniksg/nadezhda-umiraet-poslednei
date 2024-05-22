@@ -19,7 +19,7 @@ namespace TheMuseum.ViewModels
             eventAggregator.GetEvent<BiographyOpenEvent>().Subscribe(() =>
             {
                 Height = 1080;
-                Width = 1280;
+                Width = 1080;
             });
         }
     }

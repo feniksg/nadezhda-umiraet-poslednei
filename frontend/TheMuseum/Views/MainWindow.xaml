@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="TheMuseum"
         Width="{Binding Width,Mode=TwoWay}"
-        Height="{Binding Height,Mode=TwoWay}">
+        Height="{Binding Height,Mode=TwoWay}"
+        WindowStartupLocation="CenterScreen">
     <ContentControl prism:RegionManager.RegionName="MainRegion"/>
 </Window>

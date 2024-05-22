@@ -1,11 +1,17 @@
-﻿namespace TheMuseum.Autotification.Services
+﻿namespace TheMuseum.Autotification.Services;
+
+public interface IAutetificationService
 {
-    internal class AutetificationService
+    bool Authenticate(string username, string password);
+}
+
+public class AuthenticationService : IAutetificationService
+{
+    private const string CorrectUsername = "user";
+    private const string CorrectPassword = "admin";
+
+    public bool Authenticate(string username, string password)
     {
-        //public AutetificationService() { }  
-        //public bool CorrectData()
-        //{
-            
-        //}
+        return username == CorrectUsername && password == CorrectPassword;
     }
 }

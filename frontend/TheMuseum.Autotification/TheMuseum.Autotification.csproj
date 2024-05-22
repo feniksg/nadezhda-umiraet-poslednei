@@ -6,16 +6,29 @@
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Abstractions\**" />
+    <Compile Remove="Components\**" />
+    <Compile Remove="Converters\**" />
+    <Compile Remove="Themes\**" />
+    <EmbeddedResource Remove="Abstractions\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <EmbeddedResource Remove="Converters\**" />
+    <EmbeddedResource Remove="Themes\**" />
+    <None Remove="Abstractions\**" />
+    <None Remove="Components\**" />
+    <None Remove="Converters\**" />
+    <None Remove="Themes\**" />
+    <Page Remove="Abstractions\**" />
+    <Page Remove="Components\**" />
+    <Page Remove="Converters\**" />
+    <Page Remove="Themes\**" />
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
 		<PackageReference Include="ReactiveUI" Version="19.5.41" />
 		<PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Abstractions\" />
-	  <Folder Include="Components\" />
-	  <Folder Include="Converters\" />
-	  <Folder Include="Themes\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\TheMuseum.Shared\TheMuseum.Shared.csproj" />

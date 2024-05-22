@@ -3,6 +3,7 @@ using Prism.Regions;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 using TheMuseum.Biography.Models;
 using TheMuseum.Biography.Services;
@@ -14,24 +15,29 @@ internal class BiographyViewModel : ReactiveObject
 {
     private readonly IRegionManager _regionManager;
     private readonly IEventAggregator _eventAggregator;
+
+    public ICommand TestCommand { get; set; }
     public BiographyViewModel(BiographyService biographyService, IRegionManager regionManager, IEventAggregator eventAggregator)
     {
         _regionManager = regionManager;
         _eventAggregator = eventAggregator;
+        _eventAggregator.GetEvent<UserLoggedInEvent>().Subscribe(OnUserLoggedIn);
         Artworks = new(biographyService.GetArtworks());
-        TestCommand = ReactiveCommand.Create(Test);
+        // UserDisplayName = "user";
     }
     public ObservableCollection<ArtworkModel> Artworks { get; }
+    public ObservableCollection<NavigateItem> NavigationItems { get; }
+    public ObservableCollection<ContentItem> ContentItems { get; }
     [Reactive] public ArtworkModel Artwork { get; set; }
-    public ICommand TestCommand { get; init; }
+    [Reactive] public NavigateItem NavigateItem { get; set; }
+    [Reactive] public ContentItem ContentItem { get; set; }
+    [Reactive] public string UserDisplayName { get; set; }
 
-    
-    private void Test()
+ 
+    private void OnUserLoggedIn(string username)
     {
-        _regionManager.RequestNavigate("MainRegion", "AutentificationView");
-
-        // Обмен данными между модулями
-
-        _eventAggregator.GetEvent<TestEvent>().Publish(Artwork?.Name ?? "Chenibud");
+        UserDisplayName = username;
     }
+
 }
+    

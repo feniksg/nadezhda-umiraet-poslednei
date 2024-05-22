@@ -6,8 +6,113 @@
              xmlns:vm="clr-namespace:TheMuseum.Biography.ViewModels" xmlns:components="clr-namespace:TheMuseum.Biography.Components"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance vm:BiographyViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1080" d:DesignWidth="1080">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="180"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Height="180">
+            <Border Background="#F5E8D9" Height="145">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="auto" Height="145">
+                    <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\Верещагин.png" Height="100" Margin="0 0 60 0"/>
+                    <TextBox Width="450" Margin="0 10 20 10" Height="40" FontSize="16" FontFamily="Verdana" Padding="15,9,5,5"/>
+                    <Button Content="Поиск" FontSize="40" Height="65" Width="55">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border>
+                                    <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\Лупа.png" Stretch="Uniform"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\Аватар2.png" Height="65" Margin="50 0 0 0"/>
+                    <Label Content="{Binding UserDisplayName}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                </StackPanel>
+            </Border>
+            <Border Background="#703E2E" Height="20"/>
+            <Border Background="White" Height="15"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Grid.Column="0" Background="#703E2E">
+            <StackPanel>
+                <TextBlock Text="Оглавление" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0 10 0 10"/>
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding Artworks}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}" Foreground="White" TextWrapping="Wrap" Margin="5 5 5 10" FontSize="14"/>
+                                <Separator Margin="25 5 25 5" Background="White" Height="1" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Background="White">
+            <ItemsControl ItemsSource="{Binding Artworks}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#F3E3D3" Margin="40 10 100 10" CornerRadius="20">
+                            <StackPanel Margin="5">
+                                <TextBlock Text="{Binding Title}" FontSize="20" TextWrapping="Wrap" FontWeight="Bold" Margin="5" TextAlignment="Center" />
+                                <TextBlock Text="{Binding Description}" FontSize="16" TextWrapping="Wrap" Margin="5" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel  Grid.Row="2" Grid.ColumnSpan="2" Height="180">
+            <Border Height="10" Background="White"/>
+            <Border Background="#2A120B" Padding="10" Height="170">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\Верещагин3.png" Height="100"/>
+                    <StackPanel Margin="100 5 5 5">
+                        <Label Content="Главная" Foreground="White"/>
+                        <Label Content="Медиа" Foreground="White"/>
+                        <Label Content="Верещагин В.В." Foreground="White"/>
+                        <Label Content="Архив" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Margin="100 5 5 5">
+                        <Label Content="О проекте" Foreground="White" />
+                        <Label Content="Контакты" Foreground="White" />
+                        <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\Общество.png" Height="40" Margin="0 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Margin="100 5 100 5">
+                        <Label Content="Адрес:" Foreground="White" />
+                        <Label Content="Телефон:" Foreground="White" />
+                        <Label Content="Почта:" Foreground="White" />
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\вконтакте.png" Height="26" Margin="4 0 0 0"/>
+                            <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\телеграмм.png" Height="20"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Border BorderThickness="2" Height="155" Background="#46312B" CornerRadius="20">
+                        <StackPanel>
+                            <Label Content="Связь с нами" Foreground="Yellow"/>
+                            <Label Content="Введите ваше имя " Foreground="Gray"/>
+                            <Separator Margin="5 0 5 5" Background="White" Height="1" />
+                            <Label Content="Введите ваше имя " Foreground="Gray"/>
+                            <Separator Margin="5 0 5 5" Background="White" Height="1" />
+                            <Label Content="Введите ваше имя " Foreground="Gray"/>
+                            <Separator Margin="5 0 5 5" Background="White" Height="1" />
+                            <Button Content="Отправить" Background="Yellow" Width="80"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+    <!--<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -31,5 +136,5 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Content="Test" Command="{Binding TestCommand}" Grid.Row="1"/>
-    </Grid>
+    </Grid>-->
 </UserControl>

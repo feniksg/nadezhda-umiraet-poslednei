@@ -1,6 +1,7 @@
 ﻿using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using TheMuseum.Autotification.Services;
 using TheMuseum.Autotification.Views;
 
 namespace TheMuseum.Autotification;
@@ -16,5 +17,6 @@ public class AutetificationModule : IModule
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
         containerRegistry.RegisterForNavigation<AutentificationView>();
+        containerRegistry.Register<IAutetificationService, AuthenticationService>();
     }
 }
