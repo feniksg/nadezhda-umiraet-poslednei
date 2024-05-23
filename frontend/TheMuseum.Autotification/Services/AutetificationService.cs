@@ -7,11 +7,13 @@ public interface IAutetificationService
 
 public class AuthenticationService : IAutetificationService
 {
-    private const string CorrectUsername = "user";
-    private const string CorrectPassword = "admin";
+    private const string CorrectUsernameForUser = "user";
+    private const string CorrectPasswordForUser = "user";
+    private const string CorrectUsernameForAdmin = "admin";
+    private const string CorrectPasswordForAdmin = "admin";
 
     public bool Authenticate(string username, string password)
     {
-        return username == CorrectUsername && password == CorrectPassword;
+        return (username == CorrectUsernameForUser && password == CorrectPasswordForUser) || (username == CorrectUsernameForAdmin && password == CorrectPasswordForAdmin);
     }
 }

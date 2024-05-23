@@ -43,8 +43,8 @@ internal class AutentificationViewModel:ReactiveObject
         if(_autetificationService.Authenticate(Username, Password))
         {
             _eventAggregator.GetEvent<BiographyOpenEvent>().Publish();
-            _eventAggregator.GetEvent<UserLoggedInEvent>().Publish(Username);
             _regionManager.RequestNavigate("MainRegion", "BiographyView");
+            _eventAggregator.GetEvent<UserLoggedInEvent>().Publish(Username);
             LoginErrorVisibility = Visibility.Collapsed;
         }
         else

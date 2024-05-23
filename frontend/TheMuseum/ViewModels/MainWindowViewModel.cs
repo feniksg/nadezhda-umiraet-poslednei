@@ -21,6 +21,11 @@ namespace TheMuseum.ViewModels
                 Height = 1080;
                 Width = 1080;
             });
+            eventAggregator.GetEvent<AutentificationOpenEvent>().Subscribe(() =>
+            {
+                Height = 600;
+                Width = 1000;
+            });
         }
     }
 }

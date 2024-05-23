@@ -7,6 +7,22 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance vm:BiographyViewModel}"
              d:DesignHeight="1080" d:DesignWidth="1080">
+    <UserControl.Resources>
+        <!-- Стиль для кнопки ToggleButton -->
+        <Style x:Key="UserMenuButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\Аватар2.png" Height="65" Margin="20 0 0 0"/>
+                            <TextBlock Text="{Binding UserDisplayName}" Margin="5" VerticalAlignment="Center" Foreground="Black"/>
+                            <TextBlock Text="▼" Margin="5" VerticalAlignment="Center" Foreground="Black"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="180"/>
@@ -32,8 +48,20 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Image Source="D:\hub\nadezhda-umiraet-poslednei\frontend\TheMuseum.Biography\Images\Аватар2.png" Height="65" Margin="50 0 0 0"/>
-                    <Label Content="{Binding UserDisplayName}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 20 0"/>
+                    <StackPanel VerticalAlignment="Center">
+                        <ToggleButton Style="{StaticResource UserMenuButtonStyle}" IsChecked="{Binding IsMenuOpen}"/>
+                        <Popup IsOpen="{Binding IsMenuOpen}" StaysOpen="False" Placement="Bottom" PlacementTarget="{Binding ElementName=UserMenuButton}" HorizontalOffset="60">
+                            <Border BorderBrush="#703E2E" BorderThickness="1" Background="White">
+                                <ItemsControl ItemsSource="{Binding MenuItems}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{Binding}" Command="{Binding DataContext.MenuCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" MinWidth="120" FontSize="14" Background="#F5E8D9" Padding="5"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
+                        </Popup>
+                    </StackPanel>
                 </StackPanel>
             </Border>
             <Border Background="#703E2E" Height="20"/>
@@ -56,6 +84,13 @@
             </StackPanel>
         </Border>
 
+        <!--<Border Grid.Row="1" Grid.Column="0" Background="#703E2E">
+            <StackPanel>
+                <TextBlock Text="Оглавление" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0 0 0 10"/>
+                <components:ContentsTreeView/>
+            </StackPanel>
+        </Border>-->
+
         <ScrollViewer Grid.Row="1" Grid.Column="1" Background="White">
             <ItemsControl ItemsSource="{Binding Artworks}">
                 <ItemsControl.ItemTemplate>
@@ -70,6 +105,13 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+
+        <!--<StackPanel Grid.Row="1" Grid.Column="1">
+            <Border Background="#F5E8D9" Margin="0 0 0 20">
+                <TextBlock Text="Биография" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Padding="10"/>
+            </Border>
+            <components:Artwork Artworks="{Binding Artworks}" SelectedArtwork="{Binding SelectedArtwork}"/>
+        </StackPanel>-->
 
         <StackPanel  Grid.Row="2" Grid.ColumnSpan="2" Height="180">
             <Border Height="10" Background="White"/>
@@ -112,29 +154,4 @@
             </Border>
         </StackPanel>
     </Grid>
-    <!--<Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <ListView Grid.Column="0" ItemsSource="{Binding Artworks}" >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <ListView Grid.Column="1" SelectedItem="{Binding Artwork}" ItemsSource="{Binding Artworks}" >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <components:Artwork />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Content="Test" Command="{Binding TestCommand}" Grid.Row="1"/>
-    </Grid>-->
 </UserControl>
