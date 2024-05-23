@@ -105,8 +105,9 @@ internal class BiographyViewModel : ReactiveObject
 
     private async Task AddArtworkAsync()
     {
-        var addArtworkViewModel = new AddArtworkViewModel();
-        var addArtworkView = new AddArtworkView { DataContext = addArtworkViewModel };
+        var addArtworkView = new AddArtworkView();
+        var addArtworkViewModel = new AddArtworkViewModel(addArtworkView);
+        addArtworkView.DataContext = addArtworkViewModel;
 
         var result = await Application.Current.Dispatcher.InvokeAsync(() => addArtworkView.ShowDialog()); 
         if (result.HasValue && result.Value)

@@ -9,8 +9,12 @@ namespace TheMuseum.Biography.ViewModels
 {
     public class AddArtworkViewModel : ReactiveObject
     {
-        public AddArtworkViewModel()
+        private readonly Window _window;
+        public AddArtworkViewModel(Window window)
         {
+            _window = window;
+
+
             AddCommand = new DelegateCommand(Add);
             CancelCommand = new DelegateCommand(Cancel);
         }
@@ -28,16 +32,16 @@ namespace TheMuseum.Biography.ViewModels
                 Title = this.Title,
                 Description = this.Description
             };
-            // Передача данных обратно в вызывающий код
-            Application.Current.Windows[0].Tag = newArtwork;
-            Application.Current.Windows[0].DialogResult = true;
-            Application.Current.Windows[0].Close();
+
+            _window.Tag = newArtwork;
+            _window.DialogResult = true;
+            _window.Close();
         }
 
         private void Cancel()
         {
-            Application.Current.Windows[0].DialogResult = false;
-            Application.Current.Windows[0].Close();
+            _window.DialogResult = false;
+            _window.Close();
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Text;
 using TheMuseum.Biography.Models;
 
+
 namespace TheMuseum.Biography.Services
 {
     public class ApiClient : HttpClient
@@ -53,6 +54,8 @@ namespace TheMuseum.Biography.Services
 
         // Написать производный класс от HTTPClient, который имеет GET, POST, PUT, DELETE, обобщенные методы 
         private readonly ApiClient _apiClient;
+
+        private readonly string baseUrl = "https://vocal-guppy-hideously.ngrok-free.app/";
         public BiographyService(ApiClient apiClient)
         {
             _apiClient = apiClient;
@@ -60,22 +63,22 @@ namespace TheMuseum.Biography.Services
         }
         public async Task<List<ArtworkModel>> GetArtworksAsync()
         {
-            return await _apiClient.GetAsync<List<ArtworkModel>>("api/artworks");
+            return await _apiClient.GetAsync<List<ArtworkModel>>($"{baseUrl}api/artworks");
         }
 
         public async Task AddArtworkAsync(ArtworkModel artwork)
         {
-            await _apiClient.PostAsync<ArtworkModel, ArtworkModel>("api/artworks", artwork);
+            await _apiClient.PostAsync<ArtworkModel, ArtworkModel>($"{baseUrl}api/artworks", artwork);
         }
 
         public async Task UpdateArtworkAsync(ArtworkModel artwork)
         {
-            await _apiClient.PutAsync<ArtworkModel, ArtworkModel>($"api/artworks/{artwork.Id}", artwork);
+            await _apiClient.PutAsync<ArtworkModel, ArtworkModel>($"{baseUrl}api/artworks/{artwork.Id}", artwork);
         }
 
         public async Task DeleteArtworkAsync(int artworkId)
         {
-            await _apiClient.DeleteAsync($"api/artworks/{artworkId}");
+            await _apiClient.DeleteAsync($"{baseUrl}api/artworks/{artworkId}");
         }
     }
     //public ICollection<ArtworkModel> GetArtworks()
