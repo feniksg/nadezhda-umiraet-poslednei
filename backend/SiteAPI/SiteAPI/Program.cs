@@ -41,6 +41,14 @@ internal class Program
                 }
             });
         });
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAnyOrigin",
+            builder => builder.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader());
+        });
+
 
 
         var app = builder.Build();
@@ -57,8 +65,9 @@ internal class Program
         }
 
         app.UseHttpsRedirection();
+        app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-        app.UseAuthorization();
+        //app.UseAuthorization();
 
         app.MapControllers();
 

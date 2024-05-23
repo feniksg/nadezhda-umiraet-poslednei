@@ -6,22 +6,11 @@ using SiteAPI.Models;
 
 namespace SiteAPI.Controllers
 {
-    [Route("api/arts")]
+    [Route("api/artworks")]
     [ApiController]
     public class ArtworkController : CrudController<Artwork, ApplicationDbContext>
     {
         public ArtworkController(ApplicationDbContext context) :base(context) { }
-
-        public override async Task<IActionResult> GetList()
-        {
-            var items = await _context.Artworks
-                .Include(art => art.LifePeriod)
-                .Select(art => new { art.Id, art.YearCreated, art.Series, art.Genre, art.ImageFilePath, art.LifePeriod.Name })
-                .ToListAsync();
-
-
-            return Ok(items);
-        }
 
         protected override bool ModelExists(int id)
         {
