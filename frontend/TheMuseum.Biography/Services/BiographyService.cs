@@ -86,9 +86,5 @@ namespace TheMuseum.Biography.Services
             await _apiClient.DeleteAsync($"{baseUrl}api/artworks/{artworkId}");
         }
 
-        public async Task<List<ArtworkModel>> GetSearchedArtworksAsync(string query)
-        {
-            return await _apiClient.GetAsync<List<ArtworkModel>>($"{baseUrl}api/artworks/?search={query}");
-        }
     }
 }
