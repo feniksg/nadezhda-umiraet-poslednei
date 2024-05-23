@@ -25,6 +25,10 @@
     <Page Remove="Converters\**" />
     <Page Remove="Themes\**" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Верещагин.png" />
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
 		<PackageReference Include="ReactiveUI" Version="19.5.41" />
@@ -32,5 +36,10 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\TheMuseum.Shared\TheMuseum.Shared.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Images\Верещагин.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 </Project>

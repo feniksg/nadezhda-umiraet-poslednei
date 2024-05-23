@@ -6,6 +6,18 @@
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Аватар.png" />
+    <None Remove="Images\Аватар2.png" />
+    <None Remove="Images\Верещагин.png" />
+    <None Remove="Images\Верещагин2.png" />
+    <None Remove="Images\Верещагин3.png" />
+    <None Remove="Images\вконтакте.png" />
+    <None Remove="Images\Лупа.png" />
+    <None Remove="Images\Общество.png" />
+    <None Remove="Images\телеграмм.png" />
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Prism.Wpf" Version="8.1.97" />
 		<PackageReference Include="ReactiveUI" Version="19.5.41" />
@@ -13,6 +25,35 @@
 	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TheMuseum.Shared\TheMuseum.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Аватар.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Аватар2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Верещагин.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Верещагин2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Верещагин3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\вконтакте.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Лупа.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Общество.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\телеграмм.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

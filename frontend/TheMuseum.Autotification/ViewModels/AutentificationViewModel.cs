@@ -36,7 +36,7 @@ internal class AutentificationViewModel:ReactiveObject
         _eventAggregator = eventAggregator;
         eventAggregator.GetEvent<TestEvent>().Subscribe(x=>Test = x);
         LoginCommand = ReactiveCommand.Create(Login);
-        LoginErrorVisibility = Visibility.Collapsed;
+        LoginErrorVisibility = Visibility.Hidden;
     }
     private void Login()
     {
@@ -45,12 +45,14 @@ internal class AutentificationViewModel:ReactiveObject
             _eventAggregator.GetEvent<BiographyOpenEvent>().Publish();
             _regionManager.RequestNavigate("MainRegion", "BiographyView");
             _eventAggregator.GetEvent<UserLoggedInEvent>().Publish(Username);
-            LoginErrorVisibility = Visibility.Collapsed;
+            LoginErrorVisibility = Visibility.Hidden;
+            
         }
         else
         {
             LoginErrorVisibility = Visibility.Visible;
         }
     }
+
 
 }

@@ -1,8 +1,10 @@
-﻿using Prism.Events;
+﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Regions;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -20,6 +22,8 @@ internal class BiographyViewModel : ReactiveObject
     private readonly BiographyService _biographyService;
 
     public ICommand TestCommand { get; set; }
+    [Reactive]
+    public Visibility ModFunctional { get; set; }
     public BiographyViewModel(BiographyService biographyService, IRegionManager regionManager, IEventAggregator eventAggregator)
     {
         _biographyService = biographyService;
@@ -27,37 +31,36 @@ internal class BiographyViewModel : ReactiveObject
         _eventAggregator = eventAggregator;
         _eventAggregator.GetEvent<UserLoggedInEvent>().Subscribe(OnUserLoggedIn);
         Artworks = new ObservableCollection<ArtworkModel>();
-        LoadArtworksAsync().ConfigureAwait(false);
         MenuItems = new ObservableCollection<string> { "Выйти" };
         MenuCommand = ReactiveCommand.Create<string>(ExecuteMenuCommand);
+        ModFunctional = Visibility.Hidden;
 
         IsMenuOpen = false;
         UserDisplayName = "user";
 
         AddCommand = ReactiveCommand.CreateFromTask(AddArtworkAsync);
-        DeleteCommand = ReactiveCommand.CreateFromTask(DeleteArtworkAsync);
-        SwapCommand = ReactiveCommand.Create(SwapArtworks);
+        SearchCommand = ReactiveCommand.CreateFromTask(LoadSearchedArtworkAsync);
+        DeleteCommand = ReactiveCommand.CreateFromTask<int>(DeleteArtworkAsync);
         LogoutCommand = ReactiveCommand.Create(Logout);
     }
     public ObservableCollection<ArtworkModel> Artworks { get; }
     public ObservableCollection<string> MenuItems { get; set; }
     [Reactive] public ArtworkModel Artwork { get; set; }
-    [Reactive] public NavigateItem NavigateItem { get; set; }
-    [Reactive] public ContentItem ContentItem { get; set; }
-    [Reactive] ArtworkModel SelectedArtwork { get; set; }
     [Reactive] public string UserDisplayName { get; set; }
     [Reactive] public bool IsMenuOpen { get; set; }
+    [Reactive] public string SearchText { get; set; }
 
     public ICommand MenuCommand { get; }
     public ICommand AddCommand { get; }
+    public ICommand SearchCommand { get; }
     public ICommand DeleteCommand { get; }
-    public ICommand SwapCommand { get; }
     public ICommand LogoutCommand { get; }
 
-    private void OnUserLoggedIn(string username)
+    private async void OnUserLoggedIn(string username)
     {
         UserDisplayName = username;
         UpdateMenuItems(username == "admin");
+        await LoadArtworksAsync();
     }
 
     private void UpdateMenuItems(bool isAdmin)
@@ -66,10 +69,10 @@ internal class BiographyViewModel : ReactiveObject
         if (isAdmin)
         {
             MenuItems.Add("Добавить");
-            MenuItems.Add("Удалить");
-            MenuItems.Add("Поменять местами");
+            ModFunctional = Visibility.Visible;
         }
         MenuItems.Add("Выйти");
+        ModFunctional = Visibility.Hidden;
     }
 
     private void ExecuteMenuCommand(string parameter)
@@ -81,12 +84,6 @@ internal class BiographyViewModel : ReactiveObject
                 break;
             case "Добавить":
                 AddArtworkAsync().ConfigureAwait(false);
-                break;
-            case "Удалить":
-                DeleteArtworkAsync().ConfigureAwait(false);
-                break;
-            case "Поменять местами":
-                SwapArtworks();
                 break;
             default:
                 break;
@@ -117,34 +114,32 @@ internal class BiographyViewModel : ReactiveObject
             {
                 Artworks.Add(newArtwork);
                 await _biographyService.AddArtworkAsync(newArtwork);
+                await LoadArtworksAsync();
             }
         }
     }
 
-    private async Task DeleteArtworkAsync()
+    private async Task LoadSearchedArtworkAsync()
     {
-        if (SelectedArtwork != null)
+        var artworks = await _biographyService.GetSearchedArtworksAsync(SearchText);
+        Artworks.Clear();
+        foreach (var artwork in artworks)
         {
-            Artworks.Remove(SelectedArtwork);
-            await _biographyService.DeleteArtworkAsync(SelectedArtwork.Id);
+            Artworks.Add(artwork);
         }
     }
 
-    private void SwapArtworks()
+    private async Task DeleteArtworkAsync(int id)
     {
-        if (Artworks.Count > 1)
-        {
-            var temp = Artworks[0];
-            Artworks[0] = Artworks[1];
-            Artworks[1] = temp;
-        }
+        await _biographyService.DeleteArtworkAsync(id);
+        await LoadArtworksAsync();
     }
 
     private void Logout()
     {
         Artworks.Clear();
         _eventAggregator.GetEvent<AutentificationOpenEvent>().Publish();
-        _regionManager.RequestNavigate("MainRegion", "AutentificationView");  
+        _regionManager.RequestNavigate("MainRegion", "AutentificationView");
     }
 
 }

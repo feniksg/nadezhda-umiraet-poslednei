@@ -10,15 +10,3 @@ internal class ArtworkModel : ReactiveObject
     [Reactive] public string? Description { get; set; }
 
 }
-
-public class NavigateItem : ReactiveObject
-{
-    [Reactive] public string Title { get; set; }
-    [Reactive] public string ContentId { get; set; }
-}
-
-public class ContentItem : ReactiveObject
-{
-    [Reactive] public string Title { get; set; }
-    [Reactive] public string Description { get; set; }
-}
