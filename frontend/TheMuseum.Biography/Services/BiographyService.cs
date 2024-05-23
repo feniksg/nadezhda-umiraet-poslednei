@@ -66,6 +66,11 @@ namespace TheMuseum.Biography.Services
             return await _apiClient.GetAsync<List<ArtworkModel>>($"{baseUrl}api/artworks");
         }
 
+        public async Task<List<ArtworkModel>> GetSearchedArtworksAsync(string query)
+        {
+            return await _apiClient.GetAsync<List<ArtworkModel>>($"{baseUrl}api/artworks/?search={query}");
+        }
+
         public async Task AddArtworkAsync(ArtworkModel artwork)
         {
             await _apiClient.PostAsync<ArtworkModel, ArtworkModel>($"{baseUrl}api/artworks", artwork);
