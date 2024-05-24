@@ -55,7 +55,9 @@ namespace TheMuseum.Biography.Services
         // Написать производный класс от HTTPClient, который имеет GET, POST, PUT, DELETE, обобщенные методы 
         private readonly ApiClient _apiClient;
 
-        private readonly string baseUrl = "https://vocal-guppy-hideously.ngrok-free.app/";
+        // private readonly string baseUrl = "https://vocal-guppy-hideously.ngrok-free.app/";
+        private readonly string baseUrl = "http://localhost:5086/";
+
         public BiographyService(ApiClient apiClient)
         {
             _apiClient = apiClient;
