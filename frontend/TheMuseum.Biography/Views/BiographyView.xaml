@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:TheMuseum.Biography.ViewModels" xmlns:components="clr-namespace:TheMuseum.Biography.Components"
+             xmlns:cv="clr-namespace:TheMuseum.Biography.Converters"
+             xmlns:pr="clr-namespace:TheMuseum.Biography.Proxy"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance vm:BiographyViewModel}"
              d:DesignHeight="1080" d:DesignWidth="1080">
@@ -22,6 +24,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <cv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <pr:BindingProxy x:Key="AdminProxy" Data="{Binding IsAdmin}"/>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -55,7 +59,9 @@
                                 <ItemsControl ItemsSource="{Binding MenuItems}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Button Content="{Binding}" Command="{Binding DataContext.MenuCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" MinWidth="120" FontSize="14" Background="#F5E8D9" Padding="5"/>
+                                            <Button Content="{Binding}" 
+                                                    Command="{Binding DataContext.MenuCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                                    CommandParameter="{Binding}" MinWidth="120" FontSize="14" Background="#F5E8D9" Padding="5"/>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -92,7 +98,18 @@
                             <StackPanel Margin="5">
                                 <TextBlock Text="{Binding Title}" FontSize="20" TextWrapping="Wrap" FontWeight="Bold" Margin="5" TextAlignment="Center" />
                                 <TextBlock Text="{Binding Description}" FontSize="16" TextWrapping="Wrap" Margin="5" />
-                                <Button Visibility="{Binding}" Content="Удалить" Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding Id}" Margin="5" />
+                                <Button Content="Удалить" 
+                                        Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                        CommandParameter="{Binding Id}" 
+                                        Margin="5"
+                                        BorderThickness="1"
+                                        BorderBrush="#703E2E"
+                                        Background="#F5E8D9">
+                                    <Button.Visibility>
+                                        <Binding Path="Data" Source="{StaticResource AdminProxy}" Converter="{StaticResource BoolToVisibilityConverter}"/>
+                                    </Button.Visibility>
+                                </Button>
+                                
                             </StackPanel>
                         </Border>
                     </DataTemplate>

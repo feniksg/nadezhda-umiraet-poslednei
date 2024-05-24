@@ -5,6 +5,7 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Reactive;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -21,9 +22,6 @@ internal class BiographyViewModel : ReactiveObject
     private readonly IEventAggregator _eventAggregator;
     private readonly BiographyService _biographyService;
 
-    public ICommand TestCommand { get; set; }
-    [Reactive]
-    public Visibility ModFunctional { get; set; }
     public BiographyViewModel(BiographyService biographyService, IRegionManager regionManager, IEventAggregator eventAggregator)
     {
         _biographyService = biographyService;
@@ -33,7 +31,6 @@ internal class BiographyViewModel : ReactiveObject
         Artworks = new ObservableCollection<ArtworkModel>();
         MenuItems = new ObservableCollection<string> { "Выйти" };
         MenuCommand = ReactiveCommand.Create<string>(ExecuteMenuCommand);
-        ModFunctional = Visibility.Hidden;
 
         IsMenuOpen = false;
         UserDisplayName = "user";
@@ -49,6 +46,7 @@ internal class BiographyViewModel : ReactiveObject
     [Reactive] public string UserDisplayName { get; set; }
     [Reactive] public bool IsMenuOpen { get; set; }
     [Reactive] public string SearchText { get; set; }
+    [Reactive] public bool IsAdmin { get; set; }
 
     public ICommand MenuCommand { get; }
     public ICommand AddCommand { get; }
@@ -60,6 +58,7 @@ internal class BiographyViewModel : ReactiveObject
     {
         UserDisplayName = username;
         UpdateMenuItems(username == "admin");
+        IsAdmin = (username == "admin");
         await LoadArtworksAsync();
     }
 
@@ -69,10 +68,8 @@ internal class BiographyViewModel : ReactiveObject
         if (isAdmin)
         {
             MenuItems.Add("Добавить");
-            ModFunctional = Visibility.Visible;
         }
         MenuItems.Add("Выйти");
-        ModFunctional = Visibility.Hidden;
     }
 
     private void ExecuteMenuCommand(string parameter)
