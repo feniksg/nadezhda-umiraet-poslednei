@@ -134,26 +134,14 @@
                         <Image Source="..\Images\Общество.png" Height="40" Margin="0 10 0 0"/>
                     </StackPanel>
                     <StackPanel Margin="100 5 100 5">
-                        <Label Content="Адрес:" Foreground="White" />
-                        <Label Content="Телефон:" Foreground="White" />
-                        <Label Content="Почта:" Foreground="White" />
+                        <Label Content="Адрес: Социалистическая ул., 22, Череповец" Foreground="White" />
+                        <Label Content="Телефон: +7 (8202) 49-33-16" Foreground="White" />
+                        <Label Content="Почта: vereshchagin_museum@mail.ru" Foreground="White" />
                         <StackPanel Orientation="Horizontal">
                             <Image Source="..\Images\вконтакте.png" Height="26" Margin="4 0 0 0"/>
                             <Image Source="..\Images\телеграмм.png" Height="20"/>
                         </StackPanel>
                     </StackPanel>
-                    <Border BorderThickness="2" Height="155" Background="#46312B" CornerRadius="20">
-                        <StackPanel Margin="0,-2,0,0">
-                            <Label Content="Связь с нами" Foreground="Yellow"/>
-                            <Label Content="Введите ваше имя " Foreground="Gray"/>
-                            <Separator Margin="5 0 5 5" Background="White" Height="1" />
-                            <Label Content="Введите ваш e-mail " Foreground="Gray"/>
-                            <Separator Margin="5 0 5 5" Background="White" Height="1" />
-                            <Label Content="Текст сообщения " Foreground="Gray"/>
-                            <Separator Margin="5 0 5 5" Background="White" Height="1" />
-                            <Button Content="Отправить" Background="Yellow" Width="80"/>
-                        </StackPanel>
-                    </Border>
                 </StackPanel>
             </Border>
         </StackPanel>
