@@ -54,7 +54,7 @@
                     </Button>
                     <StackPanel VerticalAlignment="Center">
                         <ToggleButton Style="{StaticResource UserMenuButtonStyle}" IsChecked="{Binding IsMenuOpen}"/>
-                        <Popup IsOpen="{Binding IsMenuOpen}" StaysOpen="False" Placement="Bottom" PlacementTarget="{Binding ElementName=UserMenuButton}" HorizontalOffset="60">
+                        <Popup IsOpen="{Binding IsMenuOpen}" StaysOpen="False" Placement="Bottom" HorizontalOffset="60">
                             <Border BorderBrush="#703E2E" BorderThickness="1" Background="White">
                                 <ItemsControl ItemsSource="{Binding MenuItems}">
                                     <ItemsControl.ItemTemplate>
